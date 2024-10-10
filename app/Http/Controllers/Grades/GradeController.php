@@ -40,12 +40,17 @@ class GradeController extends Controller
     public function store(StoreGradeRequest $request)
     {
 
-        $grade = new Grade();
-        $grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
-        $grade->Notes = $request->Notes;
-        $grade->save();
-        // toastr()->success(trans('messages.success'));
-        return redirect()->route('grades.index')-with('success', trans('messages.success'));
+        try {
+            $grade = new Grade();
+            $grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
+            $grade->Notes = $request->Notes;
+            $grade->save();
+            toastr()->success(__('grades.successly'));
+            return redirect()->route('grades.index');
+        } catch (\Throwable $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+
     }
 
     /**
