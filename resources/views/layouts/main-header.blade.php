@@ -28,9 +28,20 @@
             </ul>
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
+                <ul>
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
                 </li>
+
                 <li class="nav-item dropdown ">
                     <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
@@ -109,6 +120,7 @@
                     </div>
                 </li>
             </ul>
+
         </nav>
 
         <!--=================================
