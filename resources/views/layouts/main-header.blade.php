@@ -3,10 +3,10 @@
         <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <!-- logo -->
             <div class="text-left navbar-brand-wrapper">
-                <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo-dark.png"
+                <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/images/logo-dark.png') }}"
                         alt=""></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-icon-dark.png"
-                        alt=""></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                        src="{{ asset('assets/images/logo-icon-dark.png') }}" alt=""></a>
             </div>
             <!-- Top bar left -->
             <ul class="nav navbar-nav mr-auto">
@@ -28,16 +28,20 @@
             </ul>
             <!-- top bar right -->
             <ul class="nav navbar-nav ml-auto">
-                <ul>
-                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <li>
-                            <a rel="alternate" hreflang="{{ $localeCode }}"
+                <li class="nav-item dropdown" style="color: #000">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="color: #000" href="#" role="button"
+                        aria-haspopup="true" aria-expanded="false">
+                        {{ LaravelLocalization::getCurrentLocaleNative() }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-language">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" style="color: #000" rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 {{ $properties['native'] }}
                             </a>
-                        </li>
-                    @endforeach
-                </ul>
+                        @endforeach
+                    </div>
+                </li>
                 <li class="nav-item fullscreen">
                     <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
                 </li>
@@ -97,7 +101,7 @@
                 <li class="nav-item dropdown mr-30">
                     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="assets/images/profile-avatar.jpg" alt="avatar">
+                        <img src="{{ asset('assets/images/profile-avatar.jpg') }}" alt="avatar">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-header">

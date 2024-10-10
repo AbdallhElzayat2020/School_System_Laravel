@@ -26,12 +26,12 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
-                                    class="right-nav-text">Elements</span></div>
+                                    class="right-nav-text">{{ __('language.gardes') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="accordions.html">Accordions</a></li>
+                            <li><a href="{{ route('grades.index') }}">{{ __('language.grades_list') }}</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
                             <li><a href="button.html">Button</a></li>
                             <li><a href="colorpicker.html">Colorpicker</a></li>

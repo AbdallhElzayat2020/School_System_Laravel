@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Grades\GradeController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -17,27 +19,35 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 
-// Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
+Auth::routes();
 
-//     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-//     Route::get('/', function () {
-//         return view('dashboard');
-//     });
+// Route Gest Redirect to dashboard when user is
+Route::group(['middleware' => 'guest'], function () {
 
-// });
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+
+});
+
 
 
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ],
 
     function () {
-        Route::get('/', function () {
-            return view('dashboard');
-        });
+
+
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+        Route::resource('grades', GradeController::class);
 
     }
 );
+
+
+
