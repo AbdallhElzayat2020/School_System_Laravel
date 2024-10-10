@@ -58,8 +58,14 @@
                                     <td>{{ $garde->Name }}</td>
                                     <td>{{ $garde->Notes }}</td>
                                     <td>
-                                        <a href="{{ route('grades.edit', $garde->id) }}" class="btn btn-info btn-sm"
-                                            role="button" aria-pressed="true">{{ __('grades.Edit') }}</a>
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                            data-target="#edit{{ $garde->id }}"
+                                            title="{{ trans('grades.Edit') }}"><i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                            data-target="#delete{{ $garde->id }}"
+                                            title="{{ trans('grades.Delete') }}"><i class="fa fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
