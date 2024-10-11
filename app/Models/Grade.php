@@ -12,5 +12,9 @@ class Grade extends Model
     protected $fillable = ['Name', 'Notes'];
     public $translatable = ['Name'];
     public $timestamps = true;
+    public function classrooms()
+    {
+        return $this->hasMany(Classroom::class);
+    }
 
 }

@@ -20,8 +20,6 @@
                             <li> <a href="index-05.html">Dashboard 05</a> </li>
                         </ul>
                     </li>
-                    <!-- menu title -->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Components </li>
                     <!-- menu item Elements-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
@@ -34,34 +32,18 @@
                             <li><a href="{{ route('grades.index') }}">{{ __('language.grades_list') }}</a></li>
                             <li><a href="alerts.html">Alerts</a></li>
                             <li><a href="button.html">Button</a></li>
-                            <li><a href="colorpicker.html">Colorpicker</a></li>
-                            <li><a href="dropdown.html">Dropdown</a></li>
-                            <li><a href="lists.html">lists</a></li>
-                            <li><a href="modal.html">modal</a></li>
-                            <li><a href="nav.html">nav</a></li>
-                            <li><a href="nicescroll.html">nicescroll</a></li>
-                            <li><a href="pricing-table.html">pricing table</a></li>
-                            <li><a href="ratings.html">ratings</a></li>
-                            <li><a href="date-picker.html">date picker</a></li>
-                            <li><a href="tabs.html">tabs</a></li>
-                            <li><a href="typography.html">typography</a></li>
-                            <li><a href="popover-tooltips.html">Popover tooltips</a></li>
-                            <li><a href="progress.html">progress</a></li>
-                            <li><a href="switch.html">switch</a></li>
-                            <li><a href="sweetalert2.html">sweetalert2</a></li>
-                            <li><a href="touchspin.html">touchspin</a></li>
                         </ul>
                     </li>
                     <!-- menu item calendar-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                        <a href="" data-toggle="collapse" data-target="#calendar-menu">
                             <div class="pull-left"><i class="ti-calendar"></i><span
-                                    class="right-nav-text">calendar</span></div>
+                                    class="right-nav-text">{{ __('My_Classes_trans.title_page') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="calendar.html">Events Calendar </a> </li>
+                            <li> <a href="{{ route('classrooms.index') }}">{{ __('My_Classes_trans.List_classes') }} </a> </li>
                             <li> <a href="calendar-list.html">List Calendar</a> </li>
                         </ul>
                     </li>

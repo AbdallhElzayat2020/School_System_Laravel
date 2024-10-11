@@ -19,7 +19,7 @@ return [
     'delete_Grade_Error' => 'The Grade cannot be deleted because there are classes attached to it',
     'Edit' => 'Edit',
     'successly' => 'successly Added',
-
+    'Already_Exist' => 'This Grade Already Exist',
 
     'exists' => 'This field already exists',
     'Delete' => 'Delete',

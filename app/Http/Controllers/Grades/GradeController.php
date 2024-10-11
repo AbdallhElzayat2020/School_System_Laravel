@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreGradeRequest;
 use App\Models\Grade;
 use Illuminate\Http\Request;
-
 class GradeController extends Controller
 {
 
@@ -22,79 +21,81 @@ class GradeController extends Controller
         return view('Pages.Grades.index', compact('grades'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     *
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     *
-     */
     public function store(StoreGradeRequest $request)
     {
+        if (Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->exists()) {
+            return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
+        }
 
         try {
             $grade = new Grade();
+
             $grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
+
             $grade->Notes = $request->Notes;
+
             $grade->save();
-            toastr()->success(__('grades.successly'));
+
+            toastr()->success(__('messages.success'));
+
             return redirect()->route('grades.index');
+
         } catch (\Throwable $e) {
+
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
-
-    /**
-     * Display the specified resource.
-     *
-     *
-     *
-     */
-    public function show($id)
+    public function update(StoreGradeRequest $request)
     {
+        if ($request->id) {
+            $grade = Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->first();
 
-    }
+            if ($grade && $grade->id != $request->id) {
+                return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
+            }
+        } else {
+            if (Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->exists()) {
+                return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
+            }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     *
-     *
-     */
-    public function edit($id)
-    {
+        }
+        try {
+            $id = $request->id;
 
-    }
+            $grade = Grade::findOrFail($id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     *
-     *
-     */
-    public function update($id)
-    {
+            $grade->update([
 
+                $grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name],
+
+                $grade->Notes = $request->Notes
+            ]);
+
+
+            toastr()->success(__('messages.success'));
+
+            return redirect()->route('grades.index');
+
+        } catch (\Throwable $th) {
+
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $grade = Grade::findOrFail($request->id);
+
+        $grade->delete();
+
+        toastr()->success(__('messages.Delete'));
+
+        return redirect()->route('grades.index');
 
     }
 
 }
-
-?>
