@@ -22,15 +22,17 @@ class StoreGradeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Name' => 'required',
-            'Name_en' => 'required'
+            'Name' => 'required|unique:grades,name->ar,' . $this->id,
+            'Name_en' => 'required|unique:grades,name->en,' . $this->id,
         ];
     }
     public function messages()
     {
         return [
-            'Name.required' => __("validation.required"),
-            'Name_en.required' => __("validation.required"),
+            'Name.required' => trans('validation.required'),
+            'Name.unique' => trans('validation.unique'),
+            'Name_en.required' => trans('validation.required'),
+            'Name_en.unique' => trans('validation.unique'),
         ];
     }
 }

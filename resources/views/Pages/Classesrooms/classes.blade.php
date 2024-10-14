@@ -47,7 +47,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ trans('My_Classes_trans.Name_class_en') }}</th>
+                                <th>{{ trans('My_Classes_trans.Name_class') }}</th>
                                 <th>{{ trans('My_Classes_trans.Name_Grade') }}</th>
                                 <th>{{ trans('My_Classes_trans.Processes') }}</th>
 

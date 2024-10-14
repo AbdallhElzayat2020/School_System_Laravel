@@ -23,10 +23,6 @@ class GradeController extends Controller
 
     public function store(StoreGradeRequest $request)
     {
-        if (Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->exists()) {
-            return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
-        }
-
         try {
             $grade = new Grade();
 
@@ -47,38 +43,23 @@ class GradeController extends Controller
     }
     public function update(StoreGradeRequest $request)
     {
-        if ($request->id) {
-            $grade = Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->first();
-
-            if ($grade && $grade->id != $request->id) {
-                return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
-            }
-        } else {
-            if (Grade::where('Name->ar', $request->Name)->orWhere('Name->en', $request->Name_en)->exists()) {
-                return redirect()->back()->withErrors(['error' => __('grades.Already_Exist')]);
-            }
-
-        }
         try {
-            $id = $request->id;
 
-            $grade = Grade::findOrFail($id);
+            $Grades = Grade::findOrFail($request->id);
 
-            $grade->update([
+            $Grades->update([
 
-                $grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name],
+                $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
 
-                $grade->Notes = $request->Notes
+                $Grades->Notes = $request->Notes,
             ]);
-
-
-            toastr()->success(__('messages.success'));
+            toastr()->success(trans('messages.Update'));
 
             return redirect()->route('grades.index');
+        } catch
+        (\Exception $e) {
 
-        } catch (\Throwable $th) {
-
-            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
