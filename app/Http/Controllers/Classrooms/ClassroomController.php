@@ -22,16 +22,10 @@ class ClassroomController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(StoreClassRequest $request)
     {
 
@@ -69,7 +63,6 @@ class ClassroomController extends Controller
     }
 
 
-
     /**
      * Update the specified resource in storage.
      */
@@ -104,9 +97,16 @@ class ClassroomController extends Controller
 
         $Classrooms->delete();
 
-        toastr()->error(trans('messages.Delete'));
+        toastr()->success(trans('messages.Delete'));
 
         return redirect()->route('classrooms.index');
+    }
+    public function Filter_Classes(Request $request)
+    {
+        $grades = Grade::all();
 
+        $Search = Classroom::select('*')->where('grade_id','=',$request->grade_id)->get();
+
+        return view('Pages.Classesrooms.classes',compact('grades'))->withDetails($Search);
     }
 }
