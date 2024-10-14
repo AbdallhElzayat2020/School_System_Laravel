@@ -71,14 +71,14 @@
                                     </td>
                                 </tr>
                                 <!-- edit_modal_Grade -->
-                                {{-- <div class="modal fade" id="edit{{ $class->id }}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="edit{{ $class->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                     id="exampleModalLabel">
-                                                    {{ trans('grades.edit_Grade') }}
+                                                    {{ trans('My_Classes_trans.edit_class') }}
                                                 </h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
@@ -86,14 +86,14 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <!-- add_form -->
-                                                <form action="{{ route('grades.update', 'test') }}" method="post">
-                                                    @method('PUT')
+                                                <!-- edit_form -->
+                                                <form action="{{ route('classrooms.update', 'test') }}" method="post">
+                                                    {{ method_field('patch') }}
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col">
                                                             <label for="Name"
-                                                                class="mr-sm-2">{{ trans('grades.stage_name_ar') }}
+                                                                class="mr-sm-2">{{ trans('My_Classes_trans.Name_class') }}
                                                                 :</label>
                                                             <input id="Name" type="text" name="Name"
                                                                 class="form-control"
@@ -104,18 +104,29 @@
                                                         </div>
                                                         <div class="col">
                                                             <label for="Name_en"
-                                                                class="mr-sm-2">{{ trans('grades.stage_name_en') }}
+                                                                class="mr-sm-2">{{ trans('My_Classes_trans.Name_class_en') }}
                                                                 :</label>
                                                             <input type="text" class="form-control"
                                                                 value="{{ $class->getTranslation('Name', 'en') }}"
                                                                 name="Name_en" required>
                                                         </div>
-                                                    </div>
+                                                    </div><br>
                                                     <div class="form-group">
                                                         <label
-                                                            for="exampleFormControlTextarea1">{{ trans('grades.Notes') }}
+                                                            for="exampleFormControlTextarea1">{{ trans('My_Classes_trans.Name_Grade') }}
                                                             :</label>
-                                                        <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1" rows="3">{{ $grade->Notes }}</textarea>
+                                                        <select class="form-control form-control-lg"
+                                                            id="exampleFormControlSelect1" name="grade_id">
+                                                            <option value="{{ $class->Grades->id }}">
+                                                                {{ $class->Grades->Name }}
+                                                            </option>
+                                                            @foreach ($grades as $Grade)
+                                                                <option value="{{ $Grade->id }}">
+                                                                    {{ $Grade->Name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+
                                                     </div>
                                                     <br><br>
 
@@ -130,10 +141,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
 
                                 <!-- delete_modal_Grade -->
-                                {{-- <div class="modal fade" id="delete{{ $class->id }}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="delete{{ $class->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -167,7 +178,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                             @endforeach
 
                         </tbody>
@@ -207,7 +218,6 @@
                                                     :</label>
                                                 <input class="form-control" type="text" name="Name" />
                                             </div>
-
 
                                             <div class="col">
                                                 <label for="Name"

@@ -32,9 +32,12 @@ class StoreClassRequest extends FormRequest
     public function messages()
     {
         return [
-            'Name.required' => trans('validation.required'),
-            'Name_class_en.required' => trans('validation.required'),
-            'grade_id.required' => __("validation.required"),
+            'List_Classes.*.Name.required' => trans('validation.required'),
+            'List_Classes.*.Name_class_en.required' => trans('validation.required'),
+            'List_Classes.*.grade_id.required' => __("validation.required"),
+
+            // 'List_Classes.*.Name.required' => __("validation.required"),
+
         ];
     }
 }
