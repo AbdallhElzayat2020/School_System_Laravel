@@ -8,13 +8,13 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
+
     public function up(): void
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('class_name');
-            $table->string('Notes')->nullable();
+            $table->string('Name');
             $table->timestamps();
         });
     }

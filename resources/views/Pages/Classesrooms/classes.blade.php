@@ -29,7 +29,15 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <button type="button" class="button x-small mb-3" data-toggle="modal" data-target="#exampleModal">
                     {{ trans('My_Classes_trans.add_class') }}
@@ -39,7 +47,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>{{ trans('My_Classes_trans.Name_class') }}</th>
+                                <th>{{ trans('My_Classes_trans.Name_class_en') }}</th>
                                 <th>{{ trans('My_Classes_trans.Name_Grade') }}</th>
                                 <th>{{ trans('My_Classes_trans.Processes') }}</th>
 
@@ -49,8 +57,8 @@
                             @foreach ($classes as $key => $class)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $class->class_name }}</td>
-                                    <td>{{ $class->Notes }}</td>
+                                    <td>{{ $class->Name }}</td>
+                                    <td>{{ $class->Grades->Name }}</td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                             data-target="#edit{{ $class->id }}"
@@ -63,7 +71,7 @@
                                     </td>
                                 </tr>
                                 <!-- edit_modal_Grade -->
-                                <div class="modal fade" id="edit{{ $class->id }}" tabindex="-1" role="dialog"
+                                {{-- <div class="modal fade" id="edit{{ $class->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -122,10 +130,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- delete_modal_Grade -->
-                                <div class="modal fade" id="delete{{ $class->id }}" tabindex="-1" role="dialog"
+                                {{-- <div class="modal fade" id="delete{{ $class->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -159,7 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             @endforeach
 
                         </tbody>
@@ -169,7 +177,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- add_modal_class -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -186,7 +193,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form class=" row mb-30" action="{{ route('classrooms.store') }}" method="POST">
+                    <form class=" row mb-30" action="{{ route('classrooms.store') }}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="repeater">
@@ -216,9 +223,9 @@
                                                     :</label>
 
                                                 <div class="box">
-                                                    <select class="fancyselect" name="Grade_id">
-                                                        @foreach ($grades as $grade)
-                                                            <option value="{{ $grade->id }}">{{ $grade->Name }}
+                                                    <select class="fancyselect" name="grade_id">
+                                                        @foreach ($grades as $Grade)
+                                                            <option value="{{ $Grade->id }}">{{ $Grade->Name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -264,6 +271,8 @@
         </div>
 
     </div>
+
+
 </div>
 <!-- row closed -->
 @endsection

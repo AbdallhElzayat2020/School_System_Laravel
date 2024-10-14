@@ -40,7 +40,7 @@ class GradeController extends Controller
 
             return redirect()->route('grades.index');
 
-        } catch (\Throwable $e) {
+        } catch (\Exception $e) {
 
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
