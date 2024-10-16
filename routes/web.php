@@ -32,7 +32,9 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
-
+Route::get('test',function(){
+      return view('test');
+});
 
 
 Route::group(
@@ -57,6 +59,8 @@ Route::group(
             Route::resource('sections', SectionController::class);
 
             Route::get("classes/{id}", [SectionController::class, 'getClasses'])->name('getClasses');
+
+
       }
 );
 
