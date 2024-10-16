@@ -3,6 +3,7 @@
 use App\Http\Controllers\Classrooms\ClassroomController;
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Sections\SectionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -25,9 +26,9 @@ Auth::routes();
 // Route Gest Redirect to dashboard when user is
 Route::group(['middleware' => 'guest'], function () {
 
-    Route::get('/', function () {
-        return view('auth.login');
-    });
+      Route::get('/', function () {
+            return view('auth.login');
+      });
 
 });
 
@@ -35,24 +36,27 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
-    ],
+      [
+            'prefix' => LaravelLocalization::setLocale(),
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
+      ],
 
-    function () {
+      function () {
 
 
-        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+            Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-        Route::resource('grades', GradeController::class);
+            Route::resource('grades', GradeController::class);
 
-        Route::resource('classrooms', ClassroomController::class);
+            Route::resource('classrooms', ClassroomController::class);
 
-        Route::post('Filter_Classes',[ClassroomController::class, 'Filter_Classes'])->name('Filter_Classes');
+            Route::post('Filter_Classes', [ClassroomController::class, 'Filter_Classes'])->name('Filter_Classes');
 
-        Route::post('delete_all', [GradeController::class, 'delete_all'])->name('delete_all');
+            Route::post('delete_all', [GradeController::class, 'delete_all'])->name('delete_all');
 
-    }
+            Route::resource('sections', SectionController::class);
+
+            Route::get("classes/{id}", [SectionController::class, 'getClasses'])->name('getClasses');
+      }
 );
 

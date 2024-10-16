@@ -6,18 +6,14 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
+                        <a href="" data-toggle="collapse" data-target="#dashboard">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ __('language.dashboard') }}</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="index.html">Dashboard 01</a> </li>
-                            <li> <a href="index-02.html">Dashboard 02</a> </li>
-                            <li> <a href="index-03.html">Dashboard 03</a> </li>
-                            <li> <a href="index-04.html">Dashboard 04</a> </li>
-                            <li> <a href="index-05.html">Dashboard 05</a> </li>
+                            <li> <a href="{{ route('dashboard') }}">{{ __('language.dashboard') }}</a> </li>
                         </ul>
                     </li>
                     <!-- menu item Elements-->
@@ -30,8 +26,6 @@
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{ route('grades.index') }}">{{ __('language.grades_list') }}</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                            <li><a href="button.html">Button</a></li>
                         </ul>
                     </li>
                     <!-- menu item calendar-->
@@ -44,25 +38,29 @@
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('classrooms.index') }}">{{ __('My_Classes_trans.List_classes') }} </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
                         </ul>
                     </li>
                     <!-- menu item todo-->
+
                     <li>
-                        <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
-                                list</span> </a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#sections">
+                            <div class="pull-left"><i class="ti-palette"></i><span
+                                    class="right-nav-text">{{ __('section.title_page') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="sections" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{ route('sections.index') }}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ __('section.List_Grade') }}</span> </a></li>
+
+                        </ul>
                     </li>
+
                     <!-- menu item chat-->
                     <li>
                         <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
                             </span></a>
                     </li>
-                    <!-- menu item mailbox-->
-                    <li>
-                        <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
-                                box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
-                    </li>
-                    <!-- menu item Charts-->
+
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
                             <div class="pull-left"><i class="ti-pie-chart"></i><span

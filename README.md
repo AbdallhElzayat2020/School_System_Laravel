@@ -20,4 +20,15 @@ Tables
             updated_at
         ]
 
+        sections table [ 
+            id
+            section_name
+            status
+            grade_id    $table->foreignId('grade_id')->constrained('grades')->cascadeOnDelete()->cascadeOnUpdate();
+            class_id    $table->foreignId('class_id')->constrained('classes')->cascadeOnDelete()->cascadeOnUpdate();
+            created_at
+            updated_at
+        ]
+
+
 }
