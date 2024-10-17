@@ -7,25 +7,26 @@
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="" data-toggle="collapse" data-target="#dashboard">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{ __('language.dashboard') }}</span>
+                            <div class="pull-left"><i class="ti-home"></i><span
+                                    class="right-nav-text">{{ __('language.dashboard') }}</span>
                             </div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('dashboard') }}">{{ __('language.dashboard') }}</a> </li>
+                            <li> <a href="{{ route('dashboard') }}">{{ __('language.Dashboard_page') }}</a> </li>
                         </ul>
                     </li>
                     <!-- menu item Elements-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
                             <div class="pull-left"><i class="ti-palette"></i><span
-                                    class="right-nav-text">{{ __('language.gardes') }}</span></div>
+                                    class="right-nav-text">{{ __('language.Grades') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="elements" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{ route('grades.index') }}">{{ __('language.grades_list') }}</a></li>
+                            <li><a href="{{ route('grades.index') }}">{{ __('language.Grades_list') }}</a></li>
                         </ul>
                     </li>
                     <!-- menu item calendar-->
@@ -37,7 +38,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('classrooms.index') }}">{{ __('My_Classes_trans.List_classes') }} </a> </li>
+                            <li> <a href="{{ route('classrooms.index') }}">{{ __('My_Classes_trans.List_classes') }}
+                                </a> </li>
                         </ul>
                     </li>
                     <!-- menu item todo-->
@@ -50,27 +52,23 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="sections" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{ route('sections.index') }}"><i class="ti-menu-alt"></i><span class="right-nav-text">{{ __('section.List_Grade') }}</span> </a></li>
+                            <li><a href="{{ route('sections.index') }}"><i class="ti-menu-alt"></i><span
+                                        class="right-nav-text">{{ __('section.List_Grade') }}</span> </a></li>
 
                         </ul>
                     </li>
 
-                    <!-- menu item chat-->
-                    <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
-                    </li>
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
                             <div class="pull-left"><i class="ti-pie-chart"></i><span
-                                    class="right-nav-text">Charts</span></div>
+                                    class="right-nav-text">{{ __('language.Parents') }}</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">Chart.js</a> </li>
-                            <li> <a href="chart-morris.html">Chart morris </a> </li>
+                            <li> <a href="">{{ __('language.List_Parents') }}</a> </li>
+                            <li> <a href="{{ url('add_parent') }}">{{ __('language.Add_Parent') }}</a> </li>
                             <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
                         </ul>
                     </li>
@@ -118,7 +116,8 @@
                     <!-- menu item table -->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#table">
-                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span class="right-nav-text">data
+                            <div class="pull-left"><i class="ti-layout-tab-window"></i><span
+                                    class="right-nav-text">data
                                     table</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
@@ -192,7 +191,8 @@
                                 </a>
                                 <ul id="auth" class="collapse">
                                     <li>
-                                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#login">Level
+                                        <a href="javascript:void(0);" data-toggle="collapse"
+                                            data-target="#login">Level
                                             item 1.1<div class="pull-right"><i class="ti-plus"></i></div>
                                             <div class="clearfix"></div>
                                         </a>

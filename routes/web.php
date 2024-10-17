@@ -32,9 +32,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 });
 
-Route::get('test',function(){
-      return view('test');
-});
+
 
 
 Route::group(
@@ -60,6 +58,7 @@ Route::group(
 
             Route::get("classes/{id}", [SectionController::class, 'getClasses'])->name('getClasses');
 
+            Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
 
       }
 );

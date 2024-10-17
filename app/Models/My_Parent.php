@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class My_Parent extends Model
 {
-    use HasFactory;
+      use HasFactory;
+      protected $table = 'my__parents';
 }
