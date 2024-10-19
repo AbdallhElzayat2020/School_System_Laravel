@@ -93,18 +93,6 @@
                             {{ LaravelLocalization::getCurrentLocale() == 'ar' ? $name['ar'] : $name['en'] }}</option>
                     @endforeach
                 </select>
-
-
-
-                {{-- <select class="custom-select my-1 mr-sm-2" wire:model="Nationality_Father_id">
-                    <option selected>{{ trans('Parent_trans.Choose') }}...</option>
-                    @foreach ($Nationalities as $National)
-                        <option value="{{ $National->id }}">
-                            {{ LaravelLocalization::getCurrentLocale() == 'ar' ? $National->Name['ar'] : $National->Name['en'] }}
-                        </option>
-                    @endforeach
-                </select> --}}
-
                 @error('Nationality_Father_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -134,7 +122,7 @@
                     <option selected>{{ trans('Parent_trans.Choose') }}...</option>
                     @foreach ($Religions as $Religion)
                         @php
-                            $name = json_decode($Religion->Name, true); // فك ترميز JSON
+                            $name = json_decode($Religion->Name, true);
                         @endphp
                         <option value="{{ $Religion->id }}">
                             {{ $name[LaravelLocalization::getCurrentLocale()] ?? $Religion->Name }}
