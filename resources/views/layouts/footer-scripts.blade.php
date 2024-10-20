@@ -6,7 +6,6 @@
 <script type="text/javascript">
     var plugin_path = '{{ asset('assets/js') }}/';
 </script>">
-
 <!-- chart -->
 <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
 <!-- calendar -->
@@ -45,5 +44,3 @@
         }
     }
 </script>
-
-{{-- @livewireScripts --}}

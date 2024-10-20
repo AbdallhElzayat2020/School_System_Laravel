@@ -109,7 +109,6 @@
                             {{ $name && isset($name[LaravelLocalization::getCurrentLocale()]) ? $name[LaravelLocalization::getCurrentLocale()] : $Type_Blood->Name }}
                         </option>
                     @endforeach
-
                 </select>
                 @error('Blood_Type_Father_id')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -144,10 +143,9 @@
             @enderror
         </div>
 
-        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit"
-            type="button">{{ trans('Parent_trans.Next') }}
+        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit">
+            {{ trans('Parent_trans.Next') }}
         </button>
 
     </div>
-</div>
 </div>

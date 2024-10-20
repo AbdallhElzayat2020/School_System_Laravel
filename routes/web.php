@@ -22,7 +22,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 
-Auth::routes();
+
 
 // Route Gest Redirect to dashboard when user is
 Route::group(['middleware' => 'guest'], function () {
@@ -45,12 +45,13 @@ Route::group(
             Route::post('delete_all', [GradeController::class, 'delete_all'])->name('delete_all');
             Route::resource('sections', SectionController::class);
             Route::get("classes/{id}", [SectionController::class, 'getClasses'])->name('getClasses');
-            // Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
-            // Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
-            // Route::get('/add-parent', show_Form::class);
-            Route::get('add-parent', AddParent::class);
+            // Route::get('/add_parent', function () {
+            //       return view('livewire.show-form');
+            // });
+            // Route::view('add_parent', 'livewire.show_Form');
+            Route::get('add_parent', AddParent::class)->name('add_parent');
+            // Route::get('counter', Counter::class);
       }
 );
-Route::get('test', function () {
-      return view('test');
-});
+
+Auth::routes();

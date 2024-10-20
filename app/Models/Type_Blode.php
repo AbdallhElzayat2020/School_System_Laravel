@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type_Blode extends Model
 {
-    use HasFactory;
+      use HasFactory;
 
-    protected $fillable = [
-        'Name',
-    ];
+      protected $fillable = [
+            'Name',
+      ];
 }

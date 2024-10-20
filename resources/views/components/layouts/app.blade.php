@@ -1,9 +1,33 @@
+{{-- <!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ $title ?? __('language.Add_Parent') }}</title>
+</head>
+
+<body>
+    {{ $slot }}
+</body>
+@livewireScripts
+
+</html>
+ --}}
+
+
+
+
+
+
 @extends('layouts.master')
 
 @section('title')
     {{ __('language.Add_Parent') }}
 @stop
 @section('css')
+    @livewireStyles
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -28,8 +52,7 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    @livewire('counter')
-                    {{-- <livewire:counter> --}}
+                    {{ $slot }}
                 </div>
             </div>
         </div>
