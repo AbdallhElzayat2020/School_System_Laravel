@@ -65,8 +65,10 @@
                     <table id="datatable" class="table table-striped table-bordered p-0">
                         <thead>
                             <tr>
-                                <th><input name="select_all" id="example-select-all" type="checkbox"
-                                        onclick="CheckAll('box1', this)" /></th>
+                                <th>
+                                    <input name="select_all" id="example-select-all" type="checkbox"
+                                        onclick="CheckAll('box1', this)" />
+                                </th>
                                 <th>#</th>
                                 <th>{{ trans('My_Classes_trans.Name_class') }}</th>
                                 <th>{{ trans('My_Classes_trans.Name_Grade') }}</th>
